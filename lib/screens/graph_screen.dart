@@ -11,7 +11,7 @@ class GraphScreen extends StatelessWidget {
     return List.generate(data.length, (index) {
       final quarterData = data[index];
       final estimatedEarnings = quarterData['estimated_eps'];
-      print("Estimated EPS for index $index: $estimatedEarnings"); // Debug print
+      print("Estimated EPS for index $index: $estimatedEarnings"); 
       if (estimatedEarnings != null && estimatedEarnings is double) {
         return FlSpot(index.toDouble(), estimatedEarnings);
       } else {
@@ -24,7 +24,7 @@ class GraphScreen extends StatelessWidget {
     return List.generate(data.length, (index) {
       final quarterData = data[index];
       final actualEarnings = quarterData['actual_eps'];
-      print("Actual EPS for index $index: $actualEarnings"); // Debug print
+      print("Actual EPS for index $index: $actualEarnings"); 
       if (actualEarnings != null && actualEarnings is double) {
         return FlSpot(index.toDouble(), actualEarnings);
       } else {
@@ -40,7 +40,7 @@ class GraphScreen extends StatelessWidget {
         final DateTime date = DateTime.parse(priceDate);
         final year = date.year;
         final month = date.month;
-        final quarter = (month - 1) ~/ 3 + 1; // Calculate quarter from month
+        final quarter = (month - 1) ~/ 3 + 1; 
         return 'Q$quarter $year';
       } else {
         return 'Unknown Date';
@@ -60,7 +60,7 @@ class GraphScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text(
+            const Text(
               'Estimated vs. Actual Earnings',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -121,8 +121,8 @@ class GraphScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Tap on a data point to view the earnings transcript.',
               style: TextStyle(fontSize: 16),
             ),
