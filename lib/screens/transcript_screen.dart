@@ -29,6 +29,7 @@ class TranscriptScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         title: Text('${quarterData['ticker']} Earnings Transcript'),
       ),
       body: Padding(
@@ -47,7 +48,8 @@ class TranscriptScreen extends StatelessWidget {
                 children: [
                   Text(
                     '${quarterData['ticker']} Earnings Call',
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 10),
@@ -62,7 +64,6 @@ class TranscriptScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const Divider(height: 30, thickness: 1.5),
-
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(

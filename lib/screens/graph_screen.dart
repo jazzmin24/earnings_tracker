@@ -11,7 +11,7 @@ class GraphScreen extends StatelessWidget {
     return List.generate(data.length, (index) {
       final quarterData = data[index];
       final estimatedEarnings = quarterData['estimated_eps'];
-      print("Estimated EPS for index $index: $estimatedEarnings"); 
+      print("Estimated EPS for index $index: $estimatedEarnings");
       if (estimatedEarnings != null && estimatedEarnings is double) {
         return FlSpot(index.toDouble(), estimatedEarnings);
       } else {
@@ -24,7 +24,7 @@ class GraphScreen extends StatelessWidget {
     return List.generate(data.length, (index) {
       final quarterData = data[index];
       final actualEarnings = quarterData['actual_eps'];
-      print("Actual EPS for index $index: $actualEarnings"); 
+      print("Actual EPS for index $index: $actualEarnings");
       if (actualEarnings != null && actualEarnings is double) {
         return FlSpot(index.toDouble(), actualEarnings);
       } else {
@@ -40,7 +40,7 @@ class GraphScreen extends StatelessWidget {
         final DateTime date = DateTime.parse(priceDate);
         final year = date.year;
         final month = date.month;
-        final quarter = (month - 1) ~/ 3 + 1; 
+        final quarter = (month - 1) ~/ 3 + 1;
         return 'Q$quarter $year';
       } else {
         return 'Unknown Date';
@@ -54,7 +54,8 @@ class GraphScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Earnings Comparison"),
+        surfaceTintColor: Colors.white,
+        title: const Text("Earnings Comparison"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -64,7 +65,7 @@ class GraphScreen extends StatelessWidget {
               'Estimated vs. Actual Earnings',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: LineChart(
                 LineChartData(
@@ -91,20 +92,24 @@ class GraphScreen extends StatelessWidget {
                           if (index >= 0 && index < xLabels.length) {
                             return Text(xLabels[index]);
                           }
-                          return Text('');
+                          return const Text('');
                         },
                         interval: 1,
                         reservedSize: 28,
                       ),
                     ),
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(showTitles: true, reservedSize: 40),
+                    leftTitles: const AxisTitles(
+                      sideTitles:
+                          SideTitles(showTitles: true, reservedSize: 40),
                     ),
                   ),
                   lineTouchData: LineTouchData(
-                    touchCallback: (FlTouchEvent event, LineTouchResponse? touchResponse) {
-                      if (!event.isInterestedForInteractions || touchResponse == null) return;
-                      final tappedSpotIndex = touchResponse.lineBarSpots?.first.spotIndex;
+                    touchCallback:
+                        (FlTouchEvent event, LineTouchResponse? touchResponse) {
+                      if (!event.isInterestedForInteractions ||
+                          touchResponse == null) return;
+                      final tappedSpotIndex =
+                          touchResponse.lineBarSpots?.first.spotIndex;
                       if (tappedSpotIndex != null) {
                         final tappedData = data[tappedSpotIndex];
                         Navigator.push(
