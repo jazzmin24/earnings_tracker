@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              cursorColor: Colors.blue,
               controller: _tickerController,
               decoration: InputDecoration(
                 labelText: 'Enter Company Ticker',
